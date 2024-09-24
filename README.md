@@ -2,6 +2,8 @@
 
 Material from SQL training for public use
 
+![](blue_elephant.png)
+
 ## Using the data
 
 On docker MySQL:
