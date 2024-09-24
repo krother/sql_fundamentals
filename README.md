@@ -1,2 +1,25 @@
-# sql_fundamentals
+# SQL Fundamentals
+
 Material from SQL training for public use
+
+## Using the data
+
+On docker MySQL:
+
+    mysql  -h 0.0.0.0 -u root -D babynames --password=3141592
+
+On Hackschule.de
+
+    wget ...
+    mysql < babynames.sql
+
+To enter queries:
+
+    mycli
+
+## Author
+
+(c) 2024 Dr. Kristian Rother
+
+Usable under the conditions of the Creative Commons Attribution Share-Alike License 4.0 (CC-BY-SA 4.0).
+See creativecommons.org for details.
