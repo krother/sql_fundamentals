@@ -19,17 +19,17 @@ functions at the bottom.
 3. [Open VSCode](https://github.com/krother/sql_fundamentals/blob/aa005464228c9bc31e24e4c3282b08a7181b3865/Images/VScode%20screen.png)
 4. [Click on the menu (three bars, top left) select "File -> New Text File" and save the file with "File -> Save" or Ctrl-s. Save the file name as session1.sql](https://github.com/krother/sql_fundamentals/blob/aa005464228c9bc31e24e4c3282b08a7181b3865/Images/NewTextFile.png)
 
-5. Download the file by typing into the terminal at the bottom of the screen:
+ Download the file by typing into the terminal at the bottom of the screen:
 
     wget https://github.com/krother/sql_fundamentals/raw/refs/heads/main/select_queries/allnames.sql
 
     mysql < babynames.sql
 
-6. Connect to the SQL database with:
+Connect to the SQL database with:
 
     mycli
 
-7. You should see the prompt
+You should see the prompt
 
     mysql>
 
