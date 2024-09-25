@@ -8,27 +8,28 @@
 The US authorities have registered the names of all US citizens born
 since 1880. The record is `publicly available <http://www.ssa.gov/oact/babynames/limits.html>`__.
 
-In this and the following chapters, you will analyze this data. If
-you want to use the ``pandas`` library, you find a list of useful
+In this and the following chapters, you will analyze this data.
+If you want to use the ``pandas`` library, you find a list of useful
 functions at the bottom.
 
 ## Preparations
 
-Log into hackschule.de
+1. Log into [hackschule.de]( https://workspace.hackschule.de/) 
+2. [You should see](https://github.com/krother/sql_fundamentals/blob/aa005464228c9bc31e24e4c3282b08a7181b3865/Images/Landing%20screen.png)
+3. [Open VSCode](https://github.com/krother/sql_fundamentals/blob/aa005464228c9bc31e24e4c3282b08a7181b3865/Images/VScode%20screen.png)
+4. [Click on the menu (three bars, top left) select "File -> New Text File" and save the file with "File -> Save" or Ctrl-s. Save the file name as session1.sql](https://github.com/krother/sql_fundamentals/blob/aa005464228c9bc31e24e4c3282b08a7181b3865/Images/NewTextFile.png)
 
-You should see
+5. Download the file by typing into the terminal at the bottom of the screen:
 
-Download the file by typing into the terminal at the bottom of the screen:
-
-    wget URL
+    wget https://github.com/krother/sql_fundamentals/raw/refs/heads/main/select_queries/allnames.sql
 
     mysql < babynames.sql
 
-Connect to the SQL database with:
+6. Connect to the SQL database with:
 
     mycli
 
-You should see the prompt
+7. You should see the prompt
 
     mysql>
 
