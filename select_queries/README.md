@@ -1,7 +1,7 @@
 
 # Read Baby Name Data
 
-![Baby Names](baby.png)
+![](https://github.com/krother/sql_fundamentals/blob/e29bcc5ff9b9636eb091cc2a85394dddcd496b71/Images/babies.png)
 
 ## The Dataset
 
