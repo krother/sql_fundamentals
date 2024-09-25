@@ -8,13 +8,13 @@
 The US authorities have registered the names of all US citizens born
 since 1880. The record is `publicly available <http://www.ssa.gov/oact/babynames/limits.html>`__.
 
-In this and the following chapters, you will to analyze this data. If
+In this and the following chapters, you will analyze this data. If
 you want to use the ``pandas`` library, you find a list of useful
 functions at the bottom.
 
 ## Preparations
 
-Log into hackschule.de.
+Log into hackschule.de
 
 You should see
 
