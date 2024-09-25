@@ -2,7 +2,7 @@
 
 Material from SQL training for public use
 
-![](blue_elephant.png)
+![]([blue_elephant.png](https://github.com/krother/sql_fundamentals/blob/00f4c4580be0b5dce7af5958b9f7f0863ec7d208/Images/blue_elephant.png))
 
 ## Using the data
 
