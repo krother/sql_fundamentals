@@ -17,12 +17,14 @@ functions at the bottom.
 1. Go to [hackschule.de]( https://workspace.hackschule.de/) 
 2. Login with your email address
 3. You will receive an email with a confirmation code 
-4. Enter the confirmation code and press the green button **Workspace öffnen** to open your workspace.
-5. [You should see](../Images/Landing%20screen.png)
-6. [Open VSCode](../Images/VScode%20screen.png)
-7. [Click on the menu (three bars, top left) select "File -> New Text File" and save the file with "File -> Save" or Ctrl-s. Save the file name as session1.sql](../Images/NewTextFile.png)
+4. Enter the confirmation code and press the green button **Workspace öffnen** to open your workspace[You should see this landing page](../Images/Landing%20screen.png)
+6. VS Code opens automatically. [You should see this screen](../Images/VScode%20screen.png)
+7. Click on the menu (three bars, top left) select "File -> New Text File" and save the file with "File -> Save" or Ctrl-s. Save the file name as `session1.sql`. [example screenshot](../Images/NewTextFile.png)
 8. click on the menu (**"Terminal -> New Terminal"**)
-9. in the terminal window at the bottom ,copy-paste the following two commands:
+
+## Connect to the Database
+
+In the terminal window at the bottom ,copy-paste the following two commands:
 
     wget https://github.com/krother/sql_fundamentals/raw/refs/heads/main/select_queries/allnames.sql
     mysql < allnames.sql
@@ -104,10 +106,13 @@ Check if your name occurs in the data.
 Below you find more examples of row selection.
 Build them into a query and explain what happens.
 
-* `WHERE births = 100`
-* `WHERE births >= 10000`
-* `WHERE births BETWEEN 10000 AND 11000`
-* `WHERE births = 100 AND gender = 'F'`
+    WHERE births = 100
+
+    WHERE births >= 10000
+
+    WHERE births BETWEEN 10000 AND 11000
+
+    WHERE births = 100 AND gender = 'F'
 
 Find out how many times the name **Taylor** occured in each year since 2000.
 
@@ -135,18 +140,14 @@ Find out:
 Investigate the popularity of the names of some US celebrities over the last 130 years.
 Inspect the following celebrities or choose your own:
 
-======== ==========================================
-name     comment
-======== ==========================================
-Madonna  wrote “Like a Prayer”
-Lance    went to the moon
-Katrina  hurricane in New Orleans
-Luke     Jedi
-Leia     princess from Star Wars
-Frida    painter, biography went on a Broadway show
-Arielle  mermaid
-Khaleesi job title in ‘Game of Thrones’
-======== ==========================================
+* **Madonna** (wrote “Like a Prayer”)
+* **Lance** (went to the moon)
+* **Katrina** (hurricane in New Orleans)
+* **Luke** (Jedi)
+* **Leia** (princess from Star Wars)
+* **Frida** (painter, biography went on a Broadway show)
+* **Arielle** (mermaid)
+* **Khaleesi** (job title in ‘Game of Thrones’)
 
 
 ### Exercise 11: Arithmetics
