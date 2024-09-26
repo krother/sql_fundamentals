@@ -14,23 +14,37 @@ functions at the bottom.
 
 ## Preparations
 
-Log into hackschule.de
+Visit the URL [https://workspace.hackschule.de](https://workspace.hackschule.de/).
 
-You should see
+- login with your email address
+- you will receive an email with a confirmation code
+- enter the confirmation code
 
-Download the file by typing into the terminal at the bottom of the screen:
+You should see the start screen:
 
-    wget URL
+![](front_page.png)
 
-    mysql < babynames.sql
+Press the green button **Workspace öffnen** to open your workspace.
+You should see an editor window. There:
 
-Connect to the SQL database with:
+1. click on the menu (three bars, top left) and select **"File -> New Text File"**
+2. save the file with **"File -> Save"** or `Ctrl-s``. Choose `select.sql` as the name
+3. click on the menu (**"Terminal -> New Terminal"**)
+4. in the terminal window at the bottom ,copy-paste the following two commands:
+
+    wget https://github.com/krother/sql_fundamentals/raw/refs/heads/main/select_queries/allnames.sql
+    mysql < allnames.sql
+
+Now connect to the SQL database with:
 
     mycli
 
 You should see the prompt
 
     mysql>
+
+![](preparations_done.png)
+
 
 ## Inspect the database
 
@@ -50,15 +64,16 @@ In this section, we will go through basic parts of `SELECT`, the most important 
 
 ### Exercise 1: Select everything
 
-SELECT * FROM babynames;
 
-### Exrcise: Limit output
+    SELECT * FROM babynames;
+
+### Exrcise 2: Limit output
 
 Display the first 5 rows only:
 
     SELECT * FROM babynames LIMIT 5;
 
-### Exercise 8: Paging
+### Exercise 3: Paging
 
 Add the following term to the very end of a query
 
@@ -66,22 +81,23 @@ Add the following term to the very end of a query
 
 Also inspect the 3rd or 4th "page".
 
-### Exercise 2: Select columns
+### Exercise 4: Select columns
 
-SELECT name, amount FROM babynames;
+    SELECT name, amount FROM babynames;
 
-### Exercise 3: Select rows
+### Exercise 5: Select rows
 
-SELECT * FROM babynames WHERE name='George';
+
+    SELECT * FROM babynames WHERE name='George';
 
 Edit the query to select only the `amount` column.
 
-### Exercise 4: Edit the query
+### Exercise 6: Edit the query
 
 Check if your name occurs in the data.
 (Names with fewer than 100 occurences have been removed from the data).
 
-### Exercise 5: Filtering with numbers
+### Exercise 7: Filtering with numbers
 
 Other examples of row selection are:
 
@@ -92,17 +108,17 @@ Other examples of row selection are:
 
 Find out how many times the name **Taylor** occured in each year since 2000.
 
-### Exercise 6: Sorting
+### Exercise 8: Sorting
 
 What is the difference between the two queries:
 
-SELECT name, amount FROM babynames WHERE year=2023 ORDER BY name;
+    SELECT name, amount FROM babynames WHERE year=2023 ORDER BY name;
 
 and
 
-SELECT name, amount FROM babynames WHERE year=2023 ORDER BY amount DESC;
+    SELECT name, amount FROM babynames WHERE year=2023 ORDER BY amount DESC;
 
-### Exercises
+### Exercise 9:
 
 Find out:
 
@@ -151,7 +167,7 @@ SELECT name, exp(amount) FROM babynames WHERE amount = 5 LIMIT 5;
 
 
 
-## Aggregation Functions
+### Aggregation Functions
 
 To apply SQL functions, use the pattern, use the pattern:
 
