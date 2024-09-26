@@ -1,36 +1,28 @@
 
 # Read Baby Name Data
 
-![Baby Names](baby.png)
+![](https://github.com/krother/sql_fundamentals/blob/e29bcc5ff9b9636eb091cc2a85394dddcd496b71/Images/babies.png)
 
 ## The Dataset
 
 The US authorities have registered the names of all US citizens born
 since 1880. The record is `publicly available <http://www.ssa.gov/oact/babynames/limits.html>`__.
 
-In this and the following chapters, you will analyze this data. If
-you want to use the ``pandas`` library, you find a list of useful
+In this and the following chapters, you will analyze this data.
+If you want to use the ``pandas`` library, you find a list of useful
 functions at the bottom.
 
 ## Preparations
 
-Visit the URL [https://workspace.hackschule.de](https://workspace.hackschule.de/).
-
-- login with your email address
-- you will receive an email with a confirmation code
-- enter the confirmation code
-
-You should see the start screen:
-
-![](front_page.png)
-
-Press the green button **Workspace öffnen** to open your workspace.
-You should see an editor window. There:
-
-1. click on the menu (three bars, top left) and select **"File -> New Text File"**
-2. save the file with **"File -> Save"** or `Ctrl-s``. Choose `select.sql` as the name
-3. click on the menu (**"Terminal -> New Terminal"**)
-4. in the terminal window at the bottom ,copy-paste the following two commands:
+1. Go to [hackschule.de]( https://workspace.hackschule.de/) 
+2. Login with your email address
+3. You will receive an email with a confirmation code 
+4. Enter the confirmation code and press the green button **Workspace öffnen** to open your workspace.
+5. [You should see](https://github.com/krother/sql_fundamentals/blob/aa005464228c9bc31e24e4c3282b08a7181b3865/Images/Landing%20screen.png)
+6. [Open VSCode](https://github.com/krother/sql_fundamentals/blob/aa005464228c9bc31e24e4c3282b08a7181b3865/Images/VScode%20screen.png)
+7. [Click on the menu (three bars, top left) select "File -> New Text File" and save the file with "File -> Save" or Ctrl-s. Save the file name as session1.sql](https://github.com/krother/sql_fundamentals/blob/aa005464228c9bc31e24e4c3282b08a7181b3865/Images/NewTextFile.png)
+8. click on the menu (**"Terminal -> New Terminal"**)
+9. in the terminal window at the bottom ,copy-paste the following two commands:
 
     wget https://github.com/krother/sql_fundamentals/raw/refs/heads/main/select_queries/allnames.sql
     mysql < allnames.sql
