@@ -21,7 +21,7 @@ To enter queries:
 
 ## Author
 
-(c) 2024 Dr. Kristian Rother
+(c) 2024 Dr. Kristian Rother and Shreyaasri Prakash
 
 Usable under the conditions of the Creative Commons Attribution Share-Alike License 4.0 (CC-BY-SA 4.0).
 See creativecommons.org for details.
