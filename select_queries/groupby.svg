@@ -16,7 +16,10 @@
    version="1.1"
    id="svg8"
    sodipodi:docname="groupby.svg"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   inkscape:export-filename="/home/kristian/projects/sql_fundamentals/select_queries/groupby.png"
+   inkscape:export-xdpi="128"
+   inkscape:export-ydpi="128">
   <defs
      id="defs2">
     <marker
@@ -287,9 +290,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.9899495"
-     inkscape:cx="179.66805"
-     inkscape:cy="615.6003"
+     inkscape:zoom="0.7"
+     inkscape:cx="341.16629"
+     inkscape:cy="243.3035"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"

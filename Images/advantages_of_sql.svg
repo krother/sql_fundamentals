@@ -15,8 +15,11 @@
    viewBox="0 0 297 210"
    version="1.1"
    id="svg8"
-   sodipodi:docname="SQL_Advantages.svg"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+   sodipodi:docname="advantages_of_sql.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   inkscape:export-filename="/home/kristian/projects/sql_fundamentals/Images/advantages_of_sql.png"
+   inkscape:export-xdpi="128"
+   inkscape:export-ydpi="128">
   <defs
      id="defs2">
     <marker
@@ -92,8 +95,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="403.54857"
-     inkscape:cy="332.45088"
+     inkscape:cx="147.12"
+     inkscape:cy="329.59374"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -185,34 +188,29 @@
            style="font-style:normal;font-size:18.66666603px">Many people or programs can be logged in at the same time. Rights can be managed for each table.</flowPara></flowRoot>      <g
          id="g1212"
          transform="matrix(0.06362599,0,0,0.06362599,167.89437,159.50109)">
-	<rect
-   id="rect1202"
-   height="300"
-   width="300"
-   class="st0"
-   x="0"
-   y="0"
-   style="fill:#fff2aa" />
-
-	<g
-   id="g1206">
-		<path
-   id="path1204"
-   d="m 217.1,82.5 h -45 V 60 h 67.5 V 240 H 172 v -22.5 h 45 v -135 z"
-   inkscape:connector-curvature="0" />
-
-	</g>
-
-	<g
-   id="g1210">
-		<path
-   id="path1208"
-   d="m 82.6,217.5 h 45 V 240 H 60.1 V 60 h 67.5 v 22.5 h -45 z"
-   inkscape:connector-curvature="0" />
-
-	</g>
-
-</g>
+        <rect
+           id="rect1202"
+           height="300"
+           width="300"
+           class="st0"
+           x="0"
+           y="0"
+           style="fill:#fff2aa" />
+        <g
+           id="g1206">
+          <path
+             id="path1204"
+             d="m 217.1,82.5 h -45 V 60 h 67.5 V 240 H 172 v -22.5 h 45 v -135 z"
+             inkscape:connector-curvature="0" />
+        </g>
+        <g
+           id="g1210">
+          <path
+             id="path1208"
+             d="m 82.6,217.5 h 45 V 240 H 60.1 V 60 h 67.5 v 22.5 h -45 z"
+             inkscape:connector-curvature="0" />
+        </g>
+      </g>
     </g>
     <flowRoot
        transform="matrix(0.26458333,0,0,0.26458333,0,87)"
@@ -225,7 +223,7 @@
            height="123.57143"
            width="1.4285715"
            id="rect1232" /></flowRegion><flowPara
-         id="flowPara1234"></flowPara></flowRoot>    <image
+         id="flowPara1234" /></flowRoot>    <image
        y="281.76013"
        x="259.72354"
        id="image1823"
@@ -362,44 +360,38 @@
            id="rect1452" />
         <g
            id="g1464">
-	<defs
-   id="defs1455">
-		<rect
-   y="0"
-   x="0"
-   id="rect1476"
-   width="300"
-   height="300" />
-
-	</defs>
-
-	<clipPath
-   id="SVGID_00000165919258871556066900000000617075331083685293_">
-		<use
-   height="100%"
-   width="100%"
-   y="0"
-   x="0"
-   xlink:href="#SVGID_1_-3"
-   style="overflow:visible"
-   id="use1457" />
-
-	</clipPath>
-
-	<path
-   inkscape:connector-curvature="0"
-   style="fill:#9faeff"
-   d="M 285,150 C 285,224.6 224.6,285 150,285 75.4,285 15,224.6 15,150 15,75.4 75.4,15 150,15 c 74.6,0 135,60.4 135,135"
-   clip-path="url(#SVGID_00000165919258871556066900000000617075331083685293_)"
-   id="path1460" />
-
-	<path
-   inkscape:connector-curvature="0"
-   d="m 67.5,148.1 c 36.5,16.7 65.9,46.1 82.5,82.6 16.6,-36.5 46,-66 82.5,-82.6 C 196,131.4 166.6,102 150,65.4 c -16.6,36.6 -46,66 -82.5,82.7"
-   clip-path="url(#SVGID_00000165919258871556066900000000617075331083685293_)"
-   id="path1462" />
-
-</g>
+          <defs
+             id="defs1455">
+            <rect
+               y="0"
+               x="0"
+               id="rect1476"
+               width="300"
+               height="300" />
+          </defs>
+          <clipPath
+             id="SVGID_00000165919258871556066900000000617075331083685293_">
+            <use
+               height="100%"
+               width="100%"
+               y="0"
+               x="0"
+               xlink:href="#SVGID_1_-3"
+               style="overflow:visible"
+               id="use1457" />
+          </clipPath>
+          <path
+             inkscape:connector-curvature="0"
+             style="fill:#9faeff"
+             d="M 285,150 C 285,224.6 224.6,285 150,285 75.4,285 15,224.6 15,150 15,75.4 75.4,15 150,15 c 74.6,0 135,60.4 135,135"
+             clip-path="url(#SVGID_00000165919258871556066900000000617075331083685293_)"
+             id="path1460" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 67.5,148.1 c 36.5,16.7 65.9,46.1 82.5,82.6 16.6,-36.5 46,-66 82.5,-82.6 C 196,131.4 166.6,102 150,65.4 c -16.6,36.6 -46,66 -82.5,82.7"
+             clip-path="url(#SVGID_00000165919258871556066900000000617075331083685293_)"
+             id="path1462" />
+        </g>
       </g>
     </g>
     <g
@@ -456,20 +448,18 @@
            id="flowPara1296">The storage and computation can be done by multiple computers. The user doesn't even need to notice.</flowPara></flowRoot>      <g
          transform="matrix(0.06362667,0,0,0.06362667,167.87528,194.85461)"
          id="g1622">
-	<rect
-   x="0.30000001"
-   y="0.1"
-   width="300"
-   height="300"
-   id="rect1618" />
-
-	<polygon
-   style="fill:#dee1fa"
-   class="st0"
-   points="105,180.1 105,165.1 120.1,165.1 120.1,135.1 105,135.1 105,120.1 89.8,120.1 89.8,105.1 74.7,105.1 74.7,45.1 105,45.1 105,90.1 120.1,90.1 120.1,105.1 135.2,105.1 135.2,120.1 165.4,120.1 165.4,105.1 180.5,105.1 180.5,90.1 195.7,90.1 195.7,45.1 225.9,45.1 225.9,105.1 210.8,105.1 210.8,120.1 195.7,120.1 195.7,135.1 180.5,135.1 180.5,165.1 195.7,165.1 195.7,180.1 210.8,180.1 210.8,195.1 225.9,195.1 225.9,255.1 195.7,255.1 195.7,210.1 180.5,210.1 180.5,195.1 165.4,195.1 165.4,180.1 135.2,180.1 135.2,195.1 120.1,195.1 120.1,210.1 105,210.1 105,255.1 74.7,255.1 74.7,195.1 89.8,195.1 89.8,180.1 "
-   id="polygon1620" />
-
-</g>
+        <rect
+           x="0.30000001"
+           y="0.1"
+           width="300"
+           height="300"
+           id="rect1618" />
+        <polygon
+           style="fill:#dee1fa"
+           class="st0"
+           points="105,180.1 105,165.1 120.1,165.1 120.1,135.1 105,135.1 105,120.1 89.8,120.1 89.8,105.1 74.7,105.1 74.7,45.1 105,45.1 105,90.1 120.1,90.1 120.1,105.1 135.2,105.1 135.2,120.1 165.4,120.1 165.4,105.1 180.5,105.1 180.5,90.1 195.7,90.1 195.7,45.1 225.9,45.1 225.9,105.1 210.8,105.1 210.8,120.1 195.7,120.1 195.7,135.1 180.5,135.1 180.5,165.1 195.7,165.1 195.7,180.1 210.8,180.1 210.8,195.1 225.9,195.1 225.9,255.1 195.7,255.1 195.7,210.1 180.5,210.1 180.5,195.1 165.4,195.1 165.4,180.1 135.2,180.1 135.2,195.1 120.1,195.1 120.1,210.1 105,210.1 105,255.1 74.7,255.1 74.7,195.1 89.8,195.1 89.8,180.1 "
+           id="polygon1620" />
+      </g>
     </g>
     <g
        id="g1764"
@@ -491,22 +481,20 @@
            id="flowPara1118">Constraints on allowed values in columns keep bad or invalid data to a minimum.</flowPara></flowRoot>      <g
          transform="matrix(0.06362667,0,0,0.06362667,28.914117,184.08866)"
          id="g1698">
-	<rect
-   style="fill:#485ce6"
-   y="0"
-   x="0"
-   class="st0"
-   width="300"
-   height="300"
-   id="rect1694" />
-
-	<polygon
-   style="fill:#dee1fa"
-   class="st1"
-   points="134,205.9 134,189.9 150,189.9 150,174 166,174 166,158 181.9,158 181.9,142 166,142 166,126.1 150,126.1 150,110.1 134,110.1 134,94.1 118.1,94.1 118.1,78.2 102.1,78.2 102.1,62.2 86.1,62.2 86.1,30.3 118.1,30.3 118.1,46.2 134,46.2 134,62.2 150,62.2 150,78.2 166,78.2 166,94.1 181.9,94.1 181.9,110.1 197.9,110.1 197.9,126.1 213.9,126.1 213.9,174 197.9,174 197.9,189.9 181.9,189.9 181.9,205.9 166,205.9 166,221.8 150,221.8 150,237.8 134,237.8 134,253.8 118.1,253.8 118.1,269.7 86.1,269.7 86.1,237.8 102.1,237.8 102.1,221.8 118.1,221.8 118.1,205.9 "
-   id="polygon1696" />
-
-</g>
+        <rect
+           style="fill:#485ce6"
+           y="0"
+           x="0"
+           class="st0"
+           width="300"
+           height="300"
+           id="rect1694" />
+        <polygon
+           style="fill:#dee1fa"
+           class="st1"
+           points="134,205.9 134,189.9 150,189.9 150,174 166,174 166,158 181.9,158 181.9,142 166,142 166,126.1 150,126.1 150,110.1 134,110.1 134,94.1 118.1,94.1 118.1,78.2 102.1,78.2 102.1,62.2 86.1,62.2 86.1,30.3 118.1,30.3 118.1,46.2 134,46.2 134,62.2 150,62.2 150,78.2 166,78.2 166,94.1 181.9,94.1 181.9,110.1 197.9,110.1 197.9,126.1 213.9,126.1 213.9,174 197.9,174 197.9,189.9 181.9,189.9 181.9,205.9 166,205.9 166,221.8 150,221.8 150,237.8 134,237.8 134,253.8 118.1,253.8 118.1,269.7 86.1,269.7 86.1,237.8 102.1,237.8 102.1,221.8 118.1,221.8 118.1,205.9 "
+           id="polygon1696" />
+      </g>
     </g>
   </g>
   <style
