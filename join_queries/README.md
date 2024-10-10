@@ -153,8 +153,7 @@ Show all recipes that contain carrots.
 
 Find the names of all recipes with 5 or more ingredients.
 
-SELECT
-### Exercise 1
+### Exercise 5
 
 Ingredient batch with id 7 was bad. Which customers need to be contacted?
 
