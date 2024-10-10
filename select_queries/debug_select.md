@@ -3,7 +3,7 @@
 
 ## Part 1: Syntax Errors
 
-**Syntax errors** are fundamental spellingand grammar mistakes when writing queries.
+**Syntax errors** are fundamental spelling and grammar mistakes when writing queries.
 They result in the database not being able to understand a command at all.
 As a result, nothing gets done.
 Typical reasons for syntax errors are misspelled keywords, missing brackets or wrong order of language elements.
