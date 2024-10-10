@@ -1,5 +1,5 @@
 -- Table for ingredients
-CREATE TABLE ingredient (
+CREATE TABLE IF NOT EXISTS ingredient (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     uuid VARCHAR(36) UNIQUE,
@@ -7,20 +7,20 @@ CREATE TABLE ingredient (
 );
 
 -- Table for recipes
-CREATE TABLE recipe (
+CREATE TABLE IF NOT EXISTS recipe (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255)
 );
 
 -- Many-to-Many relationship between recipes and ingredients
-CREATE TABLE recipe_ingredient (
+CREATE TABLE IF NOT EXISTS recipe_ingredient (
     recipe_id INT REFERENCES recipe(id) ON DELETE CASCADE,
     ingredient_id INT REFERENCES ingredient(id) ON DELETE CASCADE,
     PRIMARY KEY (recipe_id, ingredient_id)
 );
 
 -- Table for addresses
-CREATE TABLE address (
+CREATE TABLE IF NOT EXISTS address (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     street VARCHAR(255),
@@ -28,13 +28,13 @@ CREATE TABLE address (
 );
 
 -- Table for customers
-CREATE TABLE customer (
+CREATE TABLE IF NOT EXISTS customer (
     id SERIAL PRIMARY KEY,
     address_id INT REFERENCES address(id) ON DELETE CASCADE
 );
 
 -- Table for ingredient batches
-CREATE TABLE ingredient_batch (
+CREATE TABLE IF NOT EXISTS ingredient_batch (
     id SERIAL PRIMARY KEY,
     ingredient_id INT REFERENCES ingredient(id) ON DELETE CASCADE,
     delivery_date DATE,
@@ -44,13 +44,22 @@ CREATE TABLE ingredient_batch (
 );
 
 -- Table for deliveries
-CREATE TABLE delivery (
+CREATE TABLE IF NOT EXISTS delivery (
     id SERIAL PRIMARY KEY,
     customer_id INT REFERENCES customer(id) ON DELETE CASCADE,
     recipe_id INT REFERENCES recipe(id) ON DELETE CASCADE,
     ingredient_batch_id INT REFERENCES ingredient_batch(id) ON DELETE CASCADE,
     delivery_date DATE
 );
+
+DELETE FROM ingredient;
+DELETE FROM recipe;
+DELETE FROM recipe_ingredient;
+DELETE FROM ingredient_batch;
+DELETE FROM customer;
+DELETE FROM address;
+DELETE FROM delivery;
+
 
 INSERT INTO ingredient (id, name, uuid, unit) VALUES (1000, 'carrot', '871e6f1c-61db-4a4f-88b7-6985f07273de', 'pcs');
 INSERT INTO ingredient (id, name, uuid, unit) VALUES (1001, 'tomato', '1e41eb68-900c-4721-a585-fbdcb484f387', 'pcs');
@@ -287,18 +296,18 @@ INSERT INTO recipe (id, name) VALUES (9, 'Eintopf a la Maureen');
 INSERT INTO recipe (id, name) VALUES (10, 'Menu North Amanda Style');
 INSERT INTO recipe (id, name) VALUES (11, 'Curry Blankenshipland Style');
 INSERT INTO recipe (id, name) VALUES (12, 'Pan Ashleyview Style');
-INSERT INTO recipe (id, name) VALUES (13, 'Carter's Ratatouille');
+INSERT INTO recipe (id, name) VALUES (13, 'Carters Ratatouille');
 INSERT INTO recipe (id, name) VALUES (14, 'Kyrgyz Republic Soup');
 INSERT INTO recipe (id, name) VALUES (15, 'Curry a la James');
-INSERT INTO recipe (id, name) VALUES (16, 'Brown's Soup');
+INSERT INTO recipe (id, name) VALUES (16, 'Browns Soup');
 INSERT INTO recipe (id, name) VALUES (17, 'Ghana Eintopf');
-INSERT INTO recipe (id, name) VALUES (18, 'Cummings's Pan');
+INSERT INTO recipe (id, name) VALUES (18, 'Cummingss Pan');
 INSERT INTO recipe (id, name) VALUES (19, 'Eintopf South Brandon Style');
 INSERT INTO recipe (id, name) VALUES (20, 'Hungary Creme');
 INSERT INTO recipe (id, name) VALUES (21, 'Svalbard & Jan Mayen Islands Ratatouille');
-INSERT INTO recipe (id, name) VALUES (22, 'Braun's Ratatouille');
-INSERT INTO recipe (id, name) VALUES (23, 'Acosta's Ratatouille');
-INSERT INTO recipe (id, name) VALUES (24, 'Lawrence's Pan');
+INSERT INTO recipe (id, name) VALUES (22, 'Brauns Ratatouille');
+INSERT INTO recipe (id, name) VALUES (23, 'Acostas Ratatouille');
+INSERT INTO recipe (id, name) VALUES (24, 'Lawrences Pan');
 INSERT INTO recipe (id, name) VALUES (25, 'Pan a la Martin');
 INSERT INTO recipe (id, name) VALUES (26, 'Japan Creme');
 INSERT INTO recipe (id, name) VALUES (27, 'Romania Eintopf');
@@ -309,8 +318,8 @@ INSERT INTO recipe (id, name) VALUES (31, 'Shakshuka a la Helen');
 INSERT INTO recipe (id, name) VALUES (32, 'Germany Shakshuka');
 INSERT INTO recipe (id, name) VALUES (33, 'Curry a la Shelby');
 INSERT INTO recipe (id, name) VALUES (34, 'Shakshuka a la Nathaniel');
-INSERT INTO recipe (id, name) VALUES (35, 'Wilson's Stew');
-INSERT INTO recipe (id, name) VALUES (36, 'Jackson's Menu');
+INSERT INTO recipe (id, name) VALUES (35, 'Wilsons Stew');
+INSERT INTO recipe (id, name) VALUES (36, 'Jacksons Menu');
 INSERT INTO recipe (id, name) VALUES (37, 'Soup Port Jessicatown Style');
 INSERT INTO recipe (id, name) VALUES (38, 'Shakshuka Steelehaven Style');
 INSERT INTO recipe (id, name) VALUES (39, 'Saint Helena Creme');
@@ -321,7 +330,7 @@ INSERT INTO recipe (id, name) VALUES (43, 'Taiwan Creme');
 INSERT INTO recipe (id, name) VALUES (44, 'Menu a la Zachary');
 INSERT INTO recipe (id, name) VALUES (45, 'Pan Nolanport Style');
 INSERT INTO recipe (id, name) VALUES (46, 'Menu a la Christina');
-INSERT INTO recipe (id, name) VALUES (47, 'Roberts's Menu');
+INSERT INTO recipe (id, name) VALUES (47, 'Robertss Menu');
 INSERT INTO recipe (id, name) VALUES (48, 'Stew a la Danielle');
 INSERT INTO recipe (id, name) VALUES (49, 'Mauritius Eintopf');
 INSERT INTO recipe (id, name) VALUES (50, 'Menu a la Felicia');
@@ -606,152 +615,152 @@ INSERT INTO recipe_ingredient (recipe_id, ingredient_id) VALUES (50, '1007');
 INSERT INTO recipe_ingredient (recipe_id, ingredient_id) VALUES (50, '1014');
 INSERT INTO recipe_ingredient (recipe_id, ingredient_id) VALUES (50, '1021');
 INSERT INTO recipe_ingredient (recipe_id, ingredient_id) VALUES (50, '1010');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (1, 1000, '2024-06-07', '2024-09-25', 76, 'Woods, Glover and Nichols');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (2, 1000, '2024-08-07', '2024-01-07', 13, 'Soto Inc');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (3, 1000, '2024-07-25', '2024-02-07', 59, 'Nguyen-Jennings');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (4, 1000, '2024-05-14', '2024-07-09', 68, 'Woods, Glover and Nichols');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (5, 1000, '2024-04-05', '2024-06-17', 14, 'Chapman Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (6, 1000, '2024-04-05', '2024-09-28', 4, 'Jackson, Logan and Phillips');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (7, 1001, '2024-09-09', '2024-07-17', 35, 'Soto Inc');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (8, 1001, '2024-03-21', '2024-09-28', 87, 'Jackson-Lopez');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (9, 1001, '2024-06-17', '2024-07-06', 76, 'Chapman Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (10, 1001, '2024-01-29', '2024-06-08', 20, 'Jackson, Logan and Phillips');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (11, 1001, '2024-01-10', '2024-09-30', 58, 'Jackson, Logan and Phillips');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (12, 1001, '2024-06-14', '2024-07-07', 50, 'Jackson-Lopez');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (13, 1001, '2024-03-07', '2024-06-22', 68, 'Jackson, Logan and Phillips');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (14, 1001, '2024-08-19', '2024-05-01', 50, 'Chandler Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (15, 1001, '2024-01-10', '2024-08-11', 11, 'Nguyen-Jennings');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (16, 1001, '2024-07-09', '2024-09-29', 38, 'Woods, Glover and Nichols');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (17, 1002, '2024-05-07', '2024-06-24', 53, 'Gonzalez-Massey');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (18, 1002, '2024-09-21', '2024-09-01', 7, 'Woods, Glover and Nichols');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (19, 1002, '2024-03-05', '2024-05-09', 55, 'Oneill, Johnson and Green');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (20, 1002, '2024-04-12', '2024-03-13', 71, 'Woods, Glover and Nichols');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (21, 1002, '2024-06-19', '2024-10-05', 13, 'Chapman Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (22, 1002, '2024-03-02', '2024-04-04', 81, 'Soto Inc');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (23, 1002, '2024-02-14', '2024-09-13', 53, 'Woods, Glover and Nichols');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (24, 1002, '2024-04-12', '2024-06-22', 85, 'Jackson, Logan and Phillips');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (25, 1002, '2024-02-14', '2024-08-08', 2, 'Oneill, Johnson and Green');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (26, 1003, '2024-10-05', '2024-09-12', 91, 'Kelley Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (27, 1003, '2024-01-15', '2024-06-22', 4, 'Jackson-Lopez');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (28, 1003, '2024-07-28', '2024-04-11', 14, 'Woods, Glover and Nichols');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (29, 1003, '2024-05-28', '2024-07-15', 83, 'Oneill, Johnson and Green');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (30, 1003, '2024-06-29', '2024-06-05', 35, 'Dyer and Sons');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (31, 1004, '2024-09-14', '2024-03-04', 16, 'Kelley Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (32, 1004, '2024-01-16', '2024-09-20', 39, 'Woods, Glover and Nichols');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (33, 1004, '2024-09-20', '2024-06-09', 17, 'Chandler Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (34, 1004, '2024-08-05', '2024-03-12', 52, 'Woods, Glover and Nichols');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (35, 1004, '2024-04-02', '2024-05-22', 71, 'Jackson, Logan and Phillips');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (36, 1004, '2024-03-06', '2024-10-04', 11, 'Kelley Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (37, 1004, '2024-02-23', '2024-06-21', 3, 'Oneill, Johnson and Green');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (38, 1004, '2024-08-09', '2024-01-01', 5, 'Jackson, Logan and Phillips');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (39, 1005, '2024-08-16', '2024-01-17', 47, 'Avila-Acosta');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (40, 1005, '2024-05-11', '2024-08-10', 9, 'Jackson, Logan and Phillips');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (41, 1005, '2024-03-26', '2024-08-15', 91, 'Nguyen-Jennings');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (42, 1005, '2024-05-10', '2024-01-02', 68, 'Woods, Glover and Nichols');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (43, 1005, '2024-08-23', '2024-04-29', 28, 'Chandler Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (44, 1005, '2024-01-16', '2024-08-12', 42, 'Nguyen-Jennings');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (45, 1005, '2024-08-12', '2024-01-19', 1, 'Chapman Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (46, 1005, '2024-03-11', '2024-02-02', 26, 'Kelley Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (47, 1005, '2024-08-19', '2024-03-04', 94, 'Soto Inc');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (48, 1006, '2024-03-01', '2024-02-10', 56, 'Chandler Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (49, 1006, '2024-02-22', '2024-02-02', 91, 'Chapman Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (50, 1007, '2024-08-14', '2024-05-14', 28, 'Dyer and Sons');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (51, 1007, '2024-08-27', '2024-05-07', 40, 'Jackson-Lopez');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (52, 1007, '2024-06-25', '2024-04-21', 98, 'Oneill, Johnson and Green');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (53, 1007, '2024-04-02', '2024-04-19', 11, 'Gonzalez-Massey');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (54, 1007, '2024-07-26', '2024-07-14', 56, 'Kelley Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (55, 1007, '2024-07-20', '2024-05-11', 6, 'Oneill, Johnson and Green');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (56, 1007, '2024-06-18', '2024-06-19', 11, 'Jackson, Logan and Phillips');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (57, 1007, '2024-09-04', '2024-04-17', 53, 'Chandler Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (58, 1008, '2024-01-15', '2024-06-17', 74, 'Kelley Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (59, 1008, '2024-04-06', '2024-08-01', 17, 'Jackson-Lopez');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (60, 1008, '2024-05-07', '2024-05-04', 86, 'Avila-Acosta');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (61, 1008, '2024-03-30', '2024-01-27', 1, 'Dyer and Sons');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (62, 1008, '2024-08-29', '2024-02-25', 83, 'Gonzalez-Massey');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (63, 1008, '2024-06-23', '2024-06-03', 62, 'Chapman Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (64, 1008, '2024-07-30', '2024-07-29', 86, 'Oneill, Johnson and Green');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (65, 1008, '2024-08-31', '2024-02-10', 98, 'Soto Inc');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (66, 1008, '2024-02-25', '2024-02-07', 66, 'Woods, Glover and Nichols');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (67, 1008, '2024-05-01', '2024-04-22', 83, 'Nguyen-Jennings');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (68, 1009, '2024-09-24', '2024-04-22', 12, 'Nguyen-Jennings');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (69, 1010, '2024-07-28', '2024-02-13', 4, 'Kelley Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (70, 1010, '2024-01-22', '2024-02-22', 37, 'Soto Inc');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (71, 1010, '2024-06-18', '2024-10-07', 91, 'Kelley Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (72, 1010, '2024-08-15', '2024-07-09', 93, 'Oneill, Johnson and Green');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (73, 1010, '2024-06-28', '2024-01-08', 11, 'Jackson, Logan and Phillips');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (74, 1010, '2024-05-07', '2024-01-04', 10, 'Kelley Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (75, 1011, '2024-03-02', '2024-05-11', 57, 'Gonzalez-Massey');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (76, 1011, '2024-01-08', '2024-04-29', 29, 'Chapman Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (77, 1011, '2024-03-30', '2024-05-28', 57, 'Gonzalez-Massey');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (78, 1011, '2024-04-27', '2024-02-24', 50, 'Kelley Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (79, 1011, '2024-08-22', '2024-05-25', 22, 'Avila-Acosta');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (80, 1012, '2024-08-26', '2024-07-13', 26, 'Avila-Acosta');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (81, 1012, '2024-02-28', '2024-08-18', 17, 'Avila-Acosta');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (82, 1013, '2024-05-18', '2024-02-04', 68, 'Woods, Glover and Nichols');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (83, 1013, '2024-05-11', '2024-03-20', 29, 'Woods, Glover and Nichols');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (84, 1013, '2024-09-19', '2024-03-26', 83, 'Nguyen-Jennings');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (85, 1013, '2024-07-18', '2024-10-07', 10, 'Soto Inc');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (86, 1013, '2024-04-25', '2024-05-16', 95, 'Nguyen-Jennings');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (87, 1013, '2024-03-08', '2024-07-21', 7, 'Chapman Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (88, 1013, '2024-03-06', '2024-01-01', 59, 'Nguyen-Jennings');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (89, 1013, '2024-02-08', '2024-06-16', 86, 'Jackson-Lopez');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (90, 1014, '2024-07-02', '2024-01-10', 55, 'Kelley Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (91, 1014, '2024-06-29', '2024-08-04', 24, 'Chandler Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (92, 1014, '2024-08-17', '2024-03-12', 74, 'Jackson, Logan and Phillips');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (93, 1014, '2024-04-29', '2024-06-21', 10, 'Kelley Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (94, 1014, '2024-10-03', '2024-09-23', 77, 'Kelley Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (95, 1014, '2024-09-12', '2024-03-29', 39, 'Chandler Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (96, 1015, '2024-05-01', '2024-08-01', 10, 'Kelley Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (97, 1015, '2024-06-01', '2024-08-01', 99, 'Chapman Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (98, 1015, '2024-09-04', '2024-03-23', 21, 'Soto Inc');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (99, 1015, '2024-02-14', '2024-07-01', 1, 'Woods, Glover and Nichols');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (100, 1015, '2024-04-25', '2024-01-30', 78, 'Jackson, Logan and Phillips');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (101, 1015, '2024-08-19', '2024-03-23', 58, 'Chandler Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (102, 1016, '2024-07-02', '2024-01-27', 15, 'Chapman Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (103, 1016, '2024-03-15', '2024-01-21', 48, 'Jackson-Lopez');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (104, 1016, '2024-05-08', '2024-01-19', 58, 'Jackson-Lopez');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (105, 1016, '2024-05-19', '2024-08-27', 71, 'Soto Inc');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (106, 1016, '2024-04-29', '2024-08-08', 2, 'Avila-Acosta');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (107, 1016, '2024-04-13', '2024-09-26', 13, 'Jackson-Lopez');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (108, 1016, '2024-02-26', '2024-02-07', 80, 'Gonzalez-Massey');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (109, 1016, '2024-04-01', '2024-09-25', 49, 'Woods, Glover and Nichols');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (110, 1017, '2024-08-09', '2024-05-01', 82, 'Jackson, Logan and Phillips');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (111, 1017, '2024-03-01', '2024-04-08', 83, 'Chapman Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (112, 1017, '2024-03-08', '2024-06-09', 10, 'Avila-Acosta');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (113, 1018, '2024-04-19', '2024-08-03', 99, 'Oneill, Johnson and Green');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (114, 1018, '2024-07-24', '2024-05-16', 27, 'Woods, Glover and Nichols');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (115, 1018, '2024-04-01', '2024-08-24', 20, 'Nguyen-Jennings');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (116, 1018, '2024-10-01', '2024-09-19', 30, 'Nguyen-Jennings');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (117, 1019, '2024-01-11', '2024-09-17', 51, 'Chapman Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (118, 1019, '2024-09-01', '2024-03-17', 39, 'Dyer and Sons');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (119, 1019, '2024-06-22', '2024-06-28', 69, 'Oneill, Johnson and Green');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (120, 1019, '2024-09-07', '2024-08-01', 12, 'Gonzalez-Massey');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (121, 1019, '2024-01-18', '2024-07-31', 82, 'Jackson, Logan and Phillips');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (122, 1019, '2024-05-14', '2024-04-15', 17, 'Woods, Glover and Nichols');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (123, 1019, '2024-05-10', '2024-04-07', 65, 'Jackson-Lopez');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (124, 1019, '2024-05-23', '2024-09-26', 51, 'Soto Inc');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (125, 1019, '2024-08-01', '2024-09-14', 37, 'Soto Inc');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (126, 1019, '2024-09-26', '2024-07-08', 66, 'Soto Inc');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (127, 1020, '2024-02-26', '2024-02-13', 44, 'Jackson-Lopez');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (128, 1020, '2024-05-20', '2024-01-21', 82, 'Jackson, Logan and Phillips');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (129, 1020, '2024-03-31', '2024-08-09', 78, 'Nguyen-Jennings');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (130, 1020, '2024-06-17', '2024-04-05', 7, 'Dyer and Sons');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (131, 1020, '2024-07-16', '2024-02-09', 59, 'Oneill, Johnson and Green');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (132, 1020, '2024-09-17', '2024-04-08', 5, 'Dyer and Sons');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (133, 1021, '2024-04-17', '2024-09-19', 27, 'Kelley Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (134, 1021, '2024-04-08', '2024-05-03', 27, 'Chandler Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (135, 1021, '2024-04-10', '2024-04-24', 91, 'Soto Inc');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (136, 1021, '2024-07-01', '2024-08-12', 8, 'Avila-Acosta');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (137, 1021, '2024-08-03', '2024-08-27', 21, 'Jackson, Logan and Phillips');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (138, 1022, '2024-06-25', '2024-01-30', 14, 'Gonzalez-Massey');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (139, 1022, '2024-04-09', '2024-05-04', 34, 'Jackson-Lopez');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (140, 1022, '2024-07-09', '2024-07-29', 8, 'Gonzalez-Massey');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (141, 1022, '2024-03-04', '2024-10-02', 28, 'Nguyen-Jennings');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (142, 1022, '2024-10-03', '2024-03-05', 96, 'Kelley Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (143, 1022, '2024-08-31', '2024-07-04', 85, 'Dyer and Sons');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (144, 1022, '2024-04-12', '2024-03-04', 21, 'Chandler Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (145, 1022, '2024-01-15', '2024-03-21', 24, 'Kelley Ltd');
-INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiry_date, amount, supplier) VALUES (146, 1022, '2024-08-02', '2024-04-17', 71, 'Avila-Acosta');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (1, 1000, '2024-06-07', '2024-09-25', 76, 'Woods, Glover and Nichols');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (2, 1000, '2024-08-07', '2024-01-07', 13, 'Soto Inc');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (3, 1000, '2024-07-25', '2024-02-07', 59, 'Nguyen-Jennings');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (4, 1000, '2024-05-14', '2024-07-09', 68, 'Woods, Glover and Nichols');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (5, 1000, '2024-04-05', '2024-06-17', 14, 'Chapman Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (6, 1000, '2024-04-05', '2024-09-28', 4, 'Jackson, Logan and Phillips');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (7, 1001, '2024-09-09', '2024-07-17', 35, 'Soto Inc');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (8, 1001, '2024-03-21', '2024-09-28', 87, 'Jackson-Lopez');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (9, 1001, '2024-06-17', '2024-07-06', 76, 'Chapman Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (10, 1001, '2024-01-29', '2024-06-08', 20, 'Jackson, Logan and Phillips');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (11, 1001, '2024-01-10', '2024-09-30', 58, 'Jackson, Logan and Phillips');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (12, 1001, '2024-06-14', '2024-07-07', 50, 'Jackson-Lopez');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (13, 1001, '2024-03-07', '2024-06-22', 68, 'Jackson, Logan and Phillips');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (14, 1001, '2024-08-19', '2024-05-01', 50, 'Chandler Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (15, 1001, '2024-01-10', '2024-08-11', 11, 'Nguyen-Jennings');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (16, 1001, '2024-07-09', '2024-09-29', 38, 'Woods, Glover and Nichols');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (17, 1002, '2024-05-07', '2024-06-24', 53, 'Gonzalez-Massey');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (18, 1002, '2024-09-21', '2024-09-01', 7, 'Woods, Glover and Nichols');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (19, 1002, '2024-03-05', '2024-05-09', 55, 'Oneill, Johnson and Green');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (20, 1002, '2024-04-12', '2024-03-13', 71, 'Woods, Glover and Nichols');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (21, 1002, '2024-06-19', '2024-10-05', 13, 'Chapman Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (22, 1002, '2024-03-02', '2024-04-04', 81, 'Soto Inc');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (23, 1002, '2024-02-14', '2024-09-13', 53, 'Woods, Glover and Nichols');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (24, 1002, '2024-04-12', '2024-06-22', 85, 'Jackson, Logan and Phillips');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (25, 1002, '2024-02-14', '2024-08-08', 2, 'Oneill, Johnson and Green');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (26, 1003, '2024-10-05', '2024-09-12', 91, 'Kelley Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (27, 1003, '2024-01-15', '2024-06-22', 4, 'Jackson-Lopez');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (28, 1003, '2024-07-28', '2024-04-11', 14, 'Woods, Glover and Nichols');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (29, 1003, '2024-05-28', '2024-07-15', 83, 'Oneill, Johnson and Green');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (30, 1003, '2024-06-29', '2024-06-05', 35, 'Dyer and Sons');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (31, 1004, '2024-09-14', '2024-03-04', 16, 'Kelley Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (32, 1004, '2024-01-16', '2024-09-20', 39, 'Woods, Glover and Nichols');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (33, 1004, '2024-09-20', '2024-06-09', 17, 'Chandler Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (34, 1004, '2024-08-05', '2024-03-12', 52, 'Woods, Glover and Nichols');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (35, 1004, '2024-04-02', '2024-05-22', 71, 'Jackson, Logan and Phillips');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (36, 1004, '2024-03-06', '2024-10-04', 11, 'Kelley Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (37, 1004, '2024-02-23', '2024-06-21', 3, 'Oneill, Johnson and Green');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (38, 1004, '2024-08-09', '2024-01-01', 5, 'Jackson, Logan and Phillips');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (39, 1005, '2024-08-16', '2024-01-17', 47, 'Avila-Acosta');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (40, 1005, '2024-05-11', '2024-08-10', 9, 'Jackson, Logan and Phillips');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (41, 1005, '2024-03-26', '2024-08-15', 91, 'Nguyen-Jennings');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (42, 1005, '2024-05-10', '2024-01-02', 68, 'Woods, Glover and Nichols');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (43, 1005, '2024-08-23', '2024-04-29', 28, 'Chandler Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (44, 1005, '2024-01-16', '2024-08-12', 42, 'Nguyen-Jennings');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (45, 1005, '2024-08-12', '2024-01-19', 1, 'Chapman Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (46, 1005, '2024-03-11', '2024-02-02', 26, 'Kelley Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (47, 1005, '2024-08-19', '2024-03-04', 94, 'Soto Inc');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (48, 1006, '2024-03-01', '2024-02-10', 56, 'Chandler Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (49, 1006, '2024-02-22', '2024-02-02', 91, 'Chapman Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (50, 1007, '2024-08-14', '2024-05-14', 28, 'Dyer and Sons');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (51, 1007, '2024-08-27', '2024-05-07', 40, 'Jackson-Lopez');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (52, 1007, '2024-06-25', '2024-04-21', 98, 'Oneill, Johnson and Green');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (53, 1007, '2024-04-02', '2024-04-19', 11, 'Gonzalez-Massey');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (54, 1007, '2024-07-26', '2024-07-14', 56, 'Kelley Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (55, 1007, '2024-07-20', '2024-05-11', 6, 'Oneill, Johnson and Green');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (56, 1007, '2024-06-18', '2024-06-19', 11, 'Jackson, Logan and Phillips');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (57, 1007, '2024-09-04', '2024-04-17', 53, 'Chandler Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (58, 1008, '2024-01-15', '2024-06-17', 74, 'Kelley Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (59, 1008, '2024-04-06', '2024-08-01', 17, 'Jackson-Lopez');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (60, 1008, '2024-05-07', '2024-05-04', 86, 'Avila-Acosta');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (61, 1008, '2024-03-30', '2024-01-27', 1, 'Dyer and Sons');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (62, 1008, '2024-08-29', '2024-02-25', 83, 'Gonzalez-Massey');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (63, 1008, '2024-06-23', '2024-06-03', 62, 'Chapman Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (64, 1008, '2024-07-30', '2024-07-29', 86, 'Oneill, Johnson and Green');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (65, 1008, '2024-08-31', '2024-02-10', 98, 'Soto Inc');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (66, 1008, '2024-02-25', '2024-02-07', 66, 'Woods, Glover and Nichols');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (67, 1008, '2024-05-01', '2024-04-22', 83, 'Nguyen-Jennings');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (68, 1009, '2024-09-24', '2024-04-22', 12, 'Nguyen-Jennings');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (69, 1010, '2024-07-28', '2024-02-13', 4, 'Kelley Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (70, 1010, '2024-01-22', '2024-02-22', 37, 'Soto Inc');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (71, 1010, '2024-06-18', '2024-10-07', 91, 'Kelley Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (72, 1010, '2024-08-15', '2024-07-09', 93, 'Oneill, Johnson and Green');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (73, 1010, '2024-06-28', '2024-01-08', 11, 'Jackson, Logan and Phillips');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (74, 1010, '2024-05-07', '2024-01-04', 10, 'Kelley Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (75, 1011, '2024-03-02', '2024-05-11', 57, 'Gonzalez-Massey');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (76, 1011, '2024-01-08', '2024-04-29', 29, 'Chapman Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (77, 1011, '2024-03-30', '2024-05-28', 57, 'Gonzalez-Massey');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (78, 1011, '2024-04-27', '2024-02-24', 50, 'Kelley Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (79, 1011, '2024-08-22', '2024-05-25', 22, 'Avila-Acosta');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (80, 1012, '2024-08-26', '2024-07-13', 26, 'Avila-Acosta');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (81, 1012, '2024-02-28', '2024-08-18', 17, 'Avila-Acosta');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (82, 1013, '2024-05-18', '2024-02-04', 68, 'Woods, Glover and Nichols');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (83, 1013, '2024-05-11', '2024-03-20', 29, 'Woods, Glover and Nichols');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (84, 1013, '2024-09-19', '2024-03-26', 83, 'Nguyen-Jennings');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (85, 1013, '2024-07-18', '2024-10-07', 10, 'Soto Inc');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (86, 1013, '2024-04-25', '2024-05-16', 95, 'Nguyen-Jennings');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (87, 1013, '2024-03-08', '2024-07-21', 7, 'Chapman Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (88, 1013, '2024-03-06', '2024-01-01', 59, 'Nguyen-Jennings');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (89, 1013, '2024-02-08', '2024-06-16', 86, 'Jackson-Lopez');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (90, 1014, '2024-07-02', '2024-01-10', 55, 'Kelley Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (91, 1014, '2024-06-29', '2024-08-04', 24, 'Chandler Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (92, 1014, '2024-08-17', '2024-03-12', 74, 'Jackson, Logan and Phillips');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (93, 1014, '2024-04-29', '2024-06-21', 10, 'Kelley Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (94, 1014, '2024-10-03', '2024-09-23', 77, 'Kelley Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (95, 1014, '2024-09-12', '2024-03-29', 39, 'Chandler Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (96, 1015, '2024-05-01', '2024-08-01', 10, 'Kelley Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (97, 1015, '2024-06-01', '2024-08-01', 99, 'Chapman Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (98, 1015, '2024-09-04', '2024-03-23', 21, 'Soto Inc');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (99, 1015, '2024-02-14', '2024-07-01', 1, 'Woods, Glover and Nichols');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (100, 1015, '2024-04-25', '2024-01-30', 78, 'Jackson, Logan and Phillips');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (101, 1015, '2024-08-19', '2024-03-23', 58, 'Chandler Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (102, 1016, '2024-07-02', '2024-01-27', 15, 'Chapman Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (103, 1016, '2024-03-15', '2024-01-21', 48, 'Jackson-Lopez');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (104, 1016, '2024-05-08', '2024-01-19', 58, 'Jackson-Lopez');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (105, 1016, '2024-05-19', '2024-08-27', 71, 'Soto Inc');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (106, 1016, '2024-04-29', '2024-08-08', 2, 'Avila-Acosta');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (107, 1016, '2024-04-13', '2024-09-26', 13, 'Jackson-Lopez');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (108, 1016, '2024-02-26', '2024-02-07', 80, 'Gonzalez-Massey');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (109, 1016, '2024-04-01', '2024-09-25', 49, 'Woods, Glover and Nichols');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (110, 1017, '2024-08-09', '2024-05-01', 82, 'Jackson, Logan and Phillips');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (111, 1017, '2024-03-01', '2024-04-08', 83, 'Chapman Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (112, 1017, '2024-03-08', '2024-06-09', 10, 'Avila-Acosta');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (113, 1018, '2024-04-19', '2024-08-03', 99, 'Oneill, Johnson and Green');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (114, 1018, '2024-07-24', '2024-05-16', 27, 'Woods, Glover and Nichols');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (115, 1018, '2024-04-01', '2024-08-24', 20, 'Nguyen-Jennings');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (116, 1018, '2024-10-01', '2024-09-19', 30, 'Nguyen-Jennings');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (117, 1019, '2024-01-11', '2024-09-17', 51, 'Chapman Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (118, 1019, '2024-09-01', '2024-03-17', 39, 'Dyer and Sons');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (119, 1019, '2024-06-22', '2024-06-28', 69, 'Oneill, Johnson and Green');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (120, 1019, '2024-09-07', '2024-08-01', 12, 'Gonzalez-Massey');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (121, 1019, '2024-01-18', '2024-07-31', 82, 'Jackson, Logan and Phillips');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (122, 1019, '2024-05-14', '2024-04-15', 17, 'Woods, Glover and Nichols');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (123, 1019, '2024-05-10', '2024-04-07', 65, 'Jackson-Lopez');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (124, 1019, '2024-05-23', '2024-09-26', 51, 'Soto Inc');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (125, 1019, '2024-08-01', '2024-09-14', 37, 'Soto Inc');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (126, 1019, '2024-09-26', '2024-07-08', 66, 'Soto Inc');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (127, 1020, '2024-02-26', '2024-02-13', 44, 'Jackson-Lopez');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (128, 1020, '2024-05-20', '2024-01-21', 82, 'Jackson, Logan and Phillips');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (129, 1020, '2024-03-31', '2024-08-09', 78, 'Nguyen-Jennings');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (130, 1020, '2024-06-17', '2024-04-05', 7, 'Dyer and Sons');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (131, 1020, '2024-07-16', '2024-02-09', 59, 'Oneill, Johnson and Green');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (132, 1020, '2024-09-17', '2024-04-08', 5, 'Dyer and Sons');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (133, 1021, '2024-04-17', '2024-09-19', 27, 'Kelley Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (134, 1021, '2024-04-08', '2024-05-03', 27, 'Chandler Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (135, 1021, '2024-04-10', '2024-04-24', 91, 'Soto Inc');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (136, 1021, '2024-07-01', '2024-08-12', 8, 'Avila-Acosta');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (137, 1021, '2024-08-03', '2024-08-27', 21, 'Jackson, Logan and Phillips');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (138, 1022, '2024-06-25', '2024-01-30', 14, 'Gonzalez-Massey');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (139, 1022, '2024-04-09', '2024-05-04', 34, 'Jackson-Lopez');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (140, 1022, '2024-07-09', '2024-07-29', 8, 'Gonzalez-Massey');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (141, 1022, '2024-03-04', '2024-10-02', 28, 'Nguyen-Jennings');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (142, 1022, '2024-10-03', '2024-03-05', 96, 'Kelley Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (143, 1022, '2024-08-31', '2024-07-04', 85, 'Dyer and Sons');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (144, 1022, '2024-04-12', '2024-03-04', 21, 'Chandler Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (145, 1022, '2024-01-15', '2024-03-21', 24, 'Kelley Ltd');
+INSERT INTO ingredient_batch (id, ingredient_id, delivery_date, expiration_date, amount, supplier) VALUES (146, 1022, '2024-08-02', '2024-04-17', 71, 'Avila-Acosta');
 INSERT INTO delivery (id, customer_id, recipe_id, ingredient_batch_id, delivery_date) VALUES (1, 71, 50, 4, '2024-07-10');
 INSERT INTO delivery (id, customer_id, recipe_id, ingredient_batch_id, delivery_date) VALUES (2, 48, 50, 144, '2024-02-15');
 INSERT INTO delivery (id, customer_id, recipe_id, ingredient_batch_id, delivery_date) VALUES (3, 32, 50, 88, '2024-09-03');
