@@ -157,3 +157,18 @@ Find the names of all recipes with 5 or more ingredients.
 
 Ingredient batch with id 7 was bad. Which customers need to be contacted?
 
+
+## Part 4: Combine JOIN and GROUP BY
+
+### Exercise 1: Multiple JOINs
+
+Write a query with multiple JOIN statements that finds out all ingredients for each customer.
+(does not require a `GROUP BY`)
+
+### Exercise 2: Grouping
+
+Take the previous query and count the lines per ingredient for each customer.
+
+### Exercise 3: Filter after grouping
+
+Only show the lines with carrots.
