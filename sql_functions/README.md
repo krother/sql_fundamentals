@@ -67,6 +67,13 @@ Go to the documentation on [www.w3schools.com/mysql](https://www.w3schools.com/m
 - converts a string to lower case
 - reverses a string
 
+Write a short example query.
+
+#### Hint: Functions in Spark SQL
+
+Some functions in Spark/Databricks SQL differ slightly.
+You find a complete list on [https://spark.apache.org/docs/latest/api/sql/](https://spark.apache.org/docs/latest/api/sql/)
+
 ## Exercise 8: Palindromes
 
 Find names that are **palindromes** (they are the same if read back-to-front).
