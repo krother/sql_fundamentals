@@ -106,8 +106,8 @@ Fix the syntactic and semantic errors:
 
 ### 3.1
 
--- total number of boys for each year
-SELECT year, sum(births) FROM babynames GROUP BY year WHERE gender='M';
+    -- total number of boys for each year
+    SELECT year, sum(births) FROM babynames GROUP BY year WHERE gender='M';
 
 ### 3.2
 
