@@ -111,20 +111,21 @@ Fix the syntactic and semantic errors:
 
 ### 3.2
 
--- total number of girls/boys
-SELECT gender, year, sum(births) FROM babynames GROUP BY gender;
+    -- total number of girls/boys
+    SELECT gender, year, sum(births) FROM babynames GROUP BY gender;
 
 ### 3.3
 
--- number of births for the top name for each year
-SELECT year, max(births) FROM babynames GROUP BY max(births) ORDER BY year DESC;
+    -- number of births for the top name for each year
+    SELECT year, max(births) FROM babynames GROUP BY max(births) ORDER BY year DESC;
 
 ### 3.4
 
--- number of different names for each year/gender combination for each year ending with a zero.
-SELECT year, gender, count(name) FROM babynames WHERE year % 10 = 0;
+    -- number of different names for each year/gender combination for each year ending with a zero.
+    SELECT year, gender, count(name) FROM babynames WHERE year % 10 = 0;
 
 ### 3.5
 
--- names with more than 4M births over all the US history
-SELECT name, sum(births) FROM babynames WHERE sum(births) > 4000000 GROUP BY name ORDER BY sum(births) DESC;
+    -- names with more than 4M births over all the US history
+    SELECT name, sum(births) FROM babynames WHERE sum(births) > 4000000 GROUP BY name ORDER BY sum(births) DESC;
+
