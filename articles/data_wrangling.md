@@ -6,10 +6,10 @@
 In this exercise we will use an excerpt of the `Kaggle Spaceship Titanic Dataset [www.kaggle.com/competitions/spaceship-titanic](https://www.kaggle.com/competitions/spaceship-titanic)
 On the server, load it to the database with:
 
-   wget https://github.com/krother/sql_fundamentals/raw/refs/heads/main/data/space_titanic.sql
-   mycli < space_titanic.sql
+    wget https://github.com/krother/sql_fundamentals/raw/refs/heads/main/data/space_titanic.sql
+    mycli < space_titanic.sql
 
-   mycli
+    mycli
 
 
 ### Exercise 1: First name
