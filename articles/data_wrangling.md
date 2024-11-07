@@ -3,10 +3,8 @@
 
 ### Space Titanic
 
-In this exercise we will use an excerpt of the `Kaggle Spaceship Titanic Dataset <https://www.kaggle.com/competitions/spaceship-titanic>`__
+In this exercise we will use an excerpt of the `Kaggle Spaceship Titanic Dataset [www.kaggle.com/competitions/spaceship-titanic](https://www.kaggle.com/competitions/spaceship-titanic)
 On the server, load it to the database with:
-
-::
 
    wget https://github.com/krother/sql_fundamentals/raw/refs/heads/main/data/space_titanic.sql
    mycli < space_titanic.sql
@@ -19,9 +17,7 @@ On the server, load it to the database with:
 Write a query that shows the first name of each passenger
 (the first word in the name).
 
-.. seealso::
-
-   Use the `list of MySQL functions <https://www.w3schools.com/sql/sql_ref_mysql.asp>`__
+Use the `list of MySQL functions [www.w3schools.com/sql/sql_ref_mysql.asp](https://www.w3schools.com/sql/sql_ref_mysql.asp)
 
 ### Exercise 2: DISTINCT
 
@@ -31,8 +27,6 @@ Write a query using the keyword `DISTINCT`.
 ### Exercise 3: Identify missing values
 
 Display the passengers for whom the information about the shopping mall is unknown:
-
-::
 
     SELECT name, shopping_mall, shopping_mall IS NULL FROM titanic;
 
@@ -49,21 +43,18 @@ If the age is not present, use the median instead.
 
 You will need to use a CASE statement. Here is an example:
 
-::
-
-   SELECT name, shopping_mall, 
+    SELECT name, shopping_mall, 
           CASE 
               WHEN shopping_mall IS NULL THEN 'bad' 
               ELSE 'good'
           END AS data_quality
-   FROM titanic LIMIT 20;
+    FROM titanic LIMIT 20;
 
 ### Exercise 6: Type conversion
 
 Find a functiont that converts the type of the `age` column to a string so that
 you can create a query attaching the word **years**, e.g.:
 
-::
  
     Rose | 24 years
     Jack | 26 years
