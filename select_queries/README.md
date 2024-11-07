@@ -3,6 +3,8 @@
 
 In this section, we will go through basic parts of `SELECT`, the most important SQL command.
 
+![](select.png)
+
 ### Exercise 1: Select everything
 
 Let's start with the most straightforward SQL query:

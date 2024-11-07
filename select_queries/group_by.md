@@ -3,6 +3,8 @@
 
 In this section, you will explore one of the most powerful concepts in SQL: Aggregation.
 
+![](groupby.png)
+
 ### Exercise 1: Simple Aggregation
 
 To apply aggregation functions in SQL, use the pattern:

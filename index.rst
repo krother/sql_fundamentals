@@ -17,12 +17,14 @@ Contents
    select_queries/debug_select.md
    select_queries/group_by.md
    select_queries/debug_groupby.md
+   join_queries/join_queries.md
    join_queries/README.md
    join_queries/debug_join.md
    sql_functions/README.md
    articles/data_wrangling.md
    articles/elementary_patterns.rst
    articles/data_analytics_glossary.rst
+   articles/databases.rst
    articles/recap_exercises.rst
 
 Further Reading
