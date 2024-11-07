@@ -5,36 +5,39 @@ Material from SQL training for public use
 
 |image0|
 
-Using the data
---------------
 
-On docker MySQL:
+Contents
+--------
 
-::
+.. toctree::
+   :maxdepth: 1
 
-   mysql  -h 0.0.0.0 -u root -D babynames --password=3141592
+   articles/preparations.md
+   select_queries/README.md
+   select_queries/debug_select.md
+   select_queries/group_by.md
+   select_queries/debug_groupby.md
+   join_queries/README.md
+   sql_functions/README.md
+   articles/data_wrangling.md
+   articles/elementary_patterns.rst
+   articles/data_analytics_glossary.rst
+   articles/recap_exercises.rst
 
-On Hackschule.de
+Further Reading
+---------------
 
-::
+- `www.sqltutorial.org/ <https://www.sqltutorial.org/>`__
+- `www.w3schools.com/sql <https://www.w3schools.com/sql>`__
 
-   wget ...
-   mysql < babynames.sql
 
-To enter queries:
+Authors
+-------
 
-::
-
-   mycli
-
-Author
-------
-
-(c) 2024 Dr. Kristian Rother and Shreyaasri Prakash
+© 2024 Dr. Kristian Rother and Shreyaasri Prakash
 
 Usable under the conditions of the Creative Commons Attribution
 Share-Alike License 4.0 (CC-BY-SA 4.0). See creativecommons.org for
 details.
 
-.. |image0| image:: https://github.com/krother/sql_fundamentals/blob/00f4c4580be0b5dce7af5958b9f7f0863ec7d208/Images/blue_elephant.png
-
+.. |image0| image:: images/blue_elephant.png
