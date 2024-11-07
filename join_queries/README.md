@@ -1,5 +1,5 @@
 
-# Session 2: Exercises
+# JOIN Exercises
 
 ## Part 1: Explore a  Data Model
 

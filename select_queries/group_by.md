@@ -1,5 +1,5 @@
 
-## Aggregation Functions
+# Aggregation Functions
 
 In this section, you will explore one of the most powerful concepts in SQL: Aggregation.
 

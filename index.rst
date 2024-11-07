@@ -18,6 +18,7 @@ Contents
    select_queries/group_by.md
    select_queries/debug_groupby.md
    join_queries/README.md
+   join_queries/debug_join.md
    sql_functions/README.md
    articles/data_wrangling.md
    articles/elementary_patterns.rst
